@@ -1,7 +1,4 @@
-
-
 //  какие символы используются на первом уровне ? Пробел, j, f, k, d.
-//Программа будет создавать массив из рандомно подобранных символов в различных пропорциях
 
 // для начала нам нужна наша формула генереции случайного числа
 function getRandomInt(max) {
@@ -57,17 +54,17 @@ function press(e) {
 
     if (e.key == elements_arr[0].id) {
         elements_arr[0].remove();
-        count_right++;
+        count_right++; //  считаем правильные ответы
     } else {
-        errors_count++;
+        errors_count++; // считаем ошибки
         progress.value = errors_count;
         if (errors_count > 20) {
-            let loose = confirm("Game over! Хотите еще раз поиграть?");
+            let loose = confirm("Game over! Хотите еще раз поиграть?"); 
             console.log(loose);
             if (loose) {
                 document.location.reload();
             } else {
-                
+                // здесь могла быть ваша реклама
             }
         }
     }
