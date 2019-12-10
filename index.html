@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Тренажер печати</title>
+    <link rel="shortcut icon" href="keyboard.ico" type="image/x-icon">
     <script src="code.js" defer></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bulma.min.css">
 </head>
-<body>
-    <div class=" hero  has-background-link">
-        <div class="container column">
-            <h1 class="label is-size-3 has-text-white"> Наш простой тренажер</h1>
-        </div>
-        <div class=" container column">
-            <h3 class="label is-size-5 has-text-white">Press Enter to Start</h3>
-            <div id="root">
-                <!-- и здесь у нас будет происходить небольшая отрисовка  -->
-                <div class="buttons">
 
+<body>
+    <section class="hero is-primary is-large">
+        <div class="hero-head container">
+            <h1 class="label is-size-3 has-text-white promo"> Наш простой тренажер</h1>
+            <h3 class="label is-size-4 has-text-link has-text-centered">Ошибки</h3>
+            <progress  id="prog" class="progress is-danger" value="0" max="20">  </progress>
+            <h3 class="label is-size-5 has-text-white  has-text-centered begin ">Press Enter to Start</h3>
+        </div>
+        <div class="hero-body has-background-grey-dark ">
+            <div id="columns">
+                <div class="buttons columns is-half is-centered ">
+                        <!-- и здесь у нас будет происходить небольшая отрисовка  -->
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </body>
+
 </html>
