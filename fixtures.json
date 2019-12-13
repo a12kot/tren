@@ -1,0 +1,21 @@
+{
+    "symbol_colors" : ["is-info", "is-success", "is-warning", "is-danger", "is-link"],
+    "level_info": [
+    {
+        "name_level": "Уровень 1",
+        "symbols": [ "j", "f", "k", "d", " "],
+        "music": "level1.wav"
+    },
+    {
+        "name_level": "Уровень 2",
+        "symbols": [ "f", "d", "s", "a", " ", "j", "k", "l", ";"],
+        "music": "level2.wav"
+    },
+    {
+        "name_level": "Уровень для Кодеров",
+        "symbols": [ "j", "f", "k", "d", " "],
+        "music": "level3.wav"
+    }
+
+]
+}

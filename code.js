@@ -6,18 +6,13 @@ function getRandomInt(max) {
 }
 
 
-let colors = ['is-info', 'is-success', 'is-warning', 'is-danger', 'is-link'];
-//цвета фреймворка bulma, в которые мы будем красить наши кнопки
-//при каждой генерации мы будем назначать каждому символу свой цвет, что бы пользователь при печати не путался
-let str_arr = ['j', 'f', 'k', 'd', ' '];
-
 let begin = document.querySelector(".begin"); // здесь у нас надпись, которая приглашает пользователя нажать enter для начала игры. Потом она у нас должна пропасть
 let progress = document.getElementById("prog"); // здесь прогресс ошибок пользователя
+let buttons = document.querySelector('.buttons'); // элемент в который мы будем писать наши буковки
 
 //теперь нужно отрисовать наши буковки
 
 function drawBoard() {
-    let buttons = document.querySelector('.buttons');
     for (let index = 0; index < 20; index++) { // в идеале этот показатель пользователь должен иметь возможность изменить. Разберем это во второй части нашей статьи
         let rand = getRandomInt(colors.length); // здесь у нас массив буковок и цифр одинаковый по длине, поэтому я выбрал цвета
         buttons.insertAdjacentHTML("afterbegin",
@@ -32,8 +27,8 @@ document.addEventListener('keydown', StartGame, {
 
 function StartGame(e) {
     if (e.key == "Enter") {
-        drawBoard(); //отрисовка
-        begin.style.display = "none";
+        drawBoard();
+        begin.style.display = "none"; // скрываем приглашающую кнопку
         mainGame(); // игра началась
     }
 }
@@ -50,19 +45,18 @@ var errors_count = 0;
 function press(e) {
 
     let elements_arr = document.querySelectorAll(".game-button");  // выбираем все созданные кнопки
-    var i = 0; // нам потребуется индивидуальный счетчик на каждую букву
 
-    if (e.key == elements_arr[0].id) {
+    if (e.key == elements_arr[0].id) { // здесь можно выбирать и по querySelector, но тогда код будет длиннее
         elements_arr[0].remove();
         count_right++; //  считаем правильные ответы
     } else {
         errors_count++; // считаем ошибки
         progress.value = errors_count;
-        if (errors_count > 20) {
-            let loose = confirm("Game over! Хотите еще раз поиграть?"); 
+        if (errors_count > 20) { // если пользователь допустит ошибок больше чем у нас букв, игра закончится
+            let fail = confirm("Game over! Хотите еще раз поиграть?"); 
             console.log(loose);
-            if (loose) {
-                document.location.reload();
+            if (fail) {
+                document.location.reload(); // перезагрузка страницы если пользователь согласился еще раз играть
             } else {
                 // здесь могла быть ваша реклама
             }
@@ -72,7 +66,7 @@ function press(e) {
         alert("Вы выйграли!");
         let win = confirm("Хотите поиграть еще?");
         if(win){
-            document.location.reload();
+            document.location.reload(); // тоже самое что и при проигрыше. В дальнейшем планируется исправить
         }
     }
 }
