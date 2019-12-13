@@ -1,11 +1,43 @@
 //  какие символы используются на первом уровне ? Пробел, j, f, k, d.
+// let data;
+// fetch("fixtures.json")
+// .then(response => response.json())
+// .then(response => console.log(response.json()));
+// console.log(data);
 
-// для начала нам нужна наша формула генереции случайного числа
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+
+function loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'fixtures.json', true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
 }
 
 
+function init() {
+    loadJSON(function (response) {
+        // Parse JSON string into object
+        var actual_JSON = JSON.parse(response);
+        console.log(actual_JSON);
+    });
+}
+init();
+
+
+
+
+
+// let data = fetch_data().then();
+// console.log(data);
+// fetch_data();
+
+let error_panel = document.querySelector(".error-panel");
 let begin = document.querySelector(".begin"); // здесь у нас надпись, которая приглашает пользователя нажать enter для начала игры. Потом она у нас должна пропасть
 let progress = document.getElementById("prog"); // здесь прогресс ошибок пользователя
 let buttons = document.querySelector('.buttons'); // элемент в который мы будем писать наши буковки
@@ -53,7 +85,7 @@ function press(e) {
         errors_count++; // считаем ошибки
         progress.value = errors_count;
         if (errors_count > 20) { // если пользователь допустит ошибок больше чем у нас букв, игра закончится
-            let fail = confirm("Game over! Хотите еще раз поиграть?"); 
+            let fail = confirm("Game over! Хотите еще раз поиграть?");
             console.log(loose);
             if (fail) {
                 document.location.reload(); // перезагрузка страницы если пользователь согласился еще раз играть
@@ -65,10 +97,17 @@ function press(e) {
     if (count_right == 20) {
         alert("Вы выйграли!");
         let win = confirm("Хотите поиграть еще?");
-        if(win){
+        if (win) {
             document.location.reload(); // тоже самое что и при проигрыше. В дальнейшем планируется исправить
         }
     }
+}
+
+
+
+// для начала нам нужна наша формула генереции случайного числа
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
 }
 
 
