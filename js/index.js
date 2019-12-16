@@ -120,12 +120,13 @@ async function read_data(information) {
             count_right = 0;
             number_of_level++;
             console.log(number_of_level);
-            if(number_of_level == 1){
+            if(number_of_level == 3){
                 alert("game0ver");
                 modal.classList.add("is-active");
                 showResult(target_error, errors_count);
                 modal_close.onclick = function(){
                     modal.classList.remove("is-active");
+                    window.location.reload();
                 }
             }
             mainGame();

@@ -2,13 +2,18 @@
 export default function showResult(target_El, content){
     localStorage.setItem(+new Date, content);   
     (function drawOnLoad() {
+        let temp_arr = [];
         for (let i = 0; i < localStorage.length; i++) { 
-            let data = localStorage.key(i);
-            let item_time = new Date(+data);
+            temp_arr.push(+localStorage.key(i));
+        }
+        temp_arr.sort();
+        console.log(temp_arr);
+        for(let i = 0; i< temp_arr.length; i++){
+            let item_time = new Date(temp_arr[i]);
             // alert(localStorage.getItem(lk_key));
-            target_El.insertAdjacentHTML('beforeend', 
+            target_El.insertAdjacentHTML('afterend', 
             `<th>${item_time.getDate()} /${item_time.getMonth()}  ${item_time.getHours()} : ${item_time.getMinutes()} </th>
-            <th> ${localStorage.getItem(data)}</th>
+            <th> ${localStorage.getItem(String(temp_arr[i]))  }</th>
             `);
         }
     })();
