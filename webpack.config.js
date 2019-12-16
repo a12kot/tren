@@ -1,8 +1,5 @@
 const path = require("path");
 
-scripts: {
-  dev: "webpack --mode development"
-}
 
 module.exports = {
   entry: './js/index.js',
